@@ -52,6 +52,7 @@ export type UseFieldArrayConfig = {
   initialValue?: any,
   isEqual?: (any[], any[]) => boolean,
   validate?: (value: ?(any[]), allValues: Object, meta: ?FieldState) => ?any
+  data?: any,
 }
 
 export type FieldArrayProps = { name: string } & UseFieldArrayConfig &

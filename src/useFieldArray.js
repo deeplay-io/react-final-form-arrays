@@ -19,6 +19,7 @@ const useFieldArray = (
     subscription = all,
     defaultValue,
     initialValue,
+    data,
     isEqual = defaultIsEqual,
     validate: validateProp
   }: UseFieldArrayConfig = {}
@@ -65,6 +66,7 @@ const useFieldArray = (
     initialValue,
     isEqual,
     validate,
+    data,
     format: v => v
   })
 
