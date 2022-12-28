@@ -1,5 +1,5 @@
 // @flow
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useForm, useField } from 'react-final-form'
 import { fieldSubscriptionItems, ARRAY_ERROR } from 'final-form'
 import type { Mutators } from 'final-form-arrays'
@@ -41,8 +41,8 @@ const useFieldArray = (
     }, {}
   ), [name, formMutators])
 
-  const validate: FieldValidator = useConstant(
-    () => (value, allValues, meta) => {
+  const validate: FieldValidator = useCallback(
+    (value, allValues, meta) => {
       if (!validateProp) return undefined
       const error = validateProp(value, allValues, meta)
       if (!error || Array.isArray(error)) {
@@ -53,7 +53,8 @@ const useFieldArray = (
         ;((arrayError: any): Object)[ARRAY_ERROR] = error
         return arrayError
       }
-    }
+    },
+    [validateProp]
   )
 
   const {
